@@ -3,11 +3,14 @@ from random import shuffle
 
 import pytest
 from selene import browser
+from selene.core.configuration import Config
 
 
 @pytest.fixture(scope='session')
 def firefox_browser():
     browser.config.driver_name = 'firefox'
+    Config.window_width = 1920
+    Config.window_height = 1080
     yield browser
     browser.quit()
 
